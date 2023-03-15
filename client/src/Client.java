@@ -31,7 +31,7 @@ public class Client extends JFrame implements ActionListener, TCPConnection {
 
     public Client() {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(WIDTH,HEIGHT);
+        setSize(WIDTH, HEIGHT);
         setVisible(true);
         setAlwaysOnTop(true);
         setLocationRelativeTo(null);
@@ -42,25 +42,24 @@ public class Client extends JFrame implements ActionListener, TCPConnection {
         add(fieldMessage, BorderLayout.SOUTH);
         {
             try {
-                connection = new Network(this,IP,PORT);
+                connection = new Network(this, IP, PORT);
             } catch (IOException e) {
                 e.printStackTrace();
                 printMessage("TCPConnection exception");
             }
         }
-
-
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        String msg = fieldMessage.getText();
-        fieldMessage.setText(null);
+        @Override
+        public void actionPerformed (ActionEvent e){
+            String msg = fieldMessage.getText();
+            fieldMessage.setText(null);
 
-        connection.sendMsg(fieldNickName.getText() + ": " + msg);
-        printMessage(fieldNickName.getText() + ": " + msg);
+            connection.sendMsg(fieldNickName.getText() + ": " + msg);
+            printMessage(fieldNickName.getText() + ": " + msg);
 
-    }
+        }
+
 
 
 

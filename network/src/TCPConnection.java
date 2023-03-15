@@ -1,9 +1,9 @@
 public interface TCPConnection {
-    public void onConnection(Network network);
+    void onConnection(Network network);
 
-    public void onDisconnect(Network network);
-    public void onReiciveString(Network network, String msg);
-    public void onException(Network network, Exception e);
+    void onDisconnect(Network network);
+    void onReiciveString(Network network, String msg);
+    void onException(Network network, Exception e);
 
 
 }

@@ -34,9 +34,10 @@ public class Network {
 
                     while (!rxThread.isInterrupted()){
 
-                        tcpConnection.onReiciveString(Network.this, in.readLine());}
+                        tcpConnection.onReiciveString(Network.this, in.readLine());
+                    }
                 } catch (IOException e) {
-                    disconnect();
+                    tcpConnection.onException(Network.this, e);
                 } finally {
                     tcpConnection.onDisconnect(Network.this);
                 }
@@ -46,8 +47,9 @@ public class Network {
     }
         public synchronized void sendMsg(String msg) {
             try {
-                out.write(msg);
+                out.write(msg + "\r\n");
                 out.flush();
+
 
             } catch (IOException e) {
                 tcpConnection.onException(Network.this, e);
